@@ -6,7 +6,7 @@ DIR = 24
 ENB = 25
 
 STEPS_PER_REV = 200
-
+t = float(input('Periodo en S: '))
 def main():
     GPIO.setmode(GPIO.BCM)
 
@@ -20,9 +20,9 @@ def main():
 
             for paso in range(STEPS_PER_REV):
                 GPIO.output(STP, GPIO.HIGH)
-                sleep(0.010)
+                sleep(t)
                 GPIO.output(STP, GPIO.LOW)
-                sleep(0.010)
+                sleep(t)
     finally:
         GPIO.cleanup()
 
