@@ -1,15 +1,32 @@
 import Jetson.GPIO as GPIO
+from time import sleep_ms
 
-GPIO.setmode(GPIO.BCM)
+STP = 18
+DIR = 24
+ENB = 25
 
-STP = 19
-DIR = 26
+STEPS_PER_REV = 200
 
-GPIO.setup(STP, GPIO.OUT)
-GPIO.setup(DIR, GPIO.OUT)
+def main():
+    GPIO.setmode(GPIO.BCM)
 
-GPIO.output(STP, GPIO.HIGH)
-GPIO.output(DIR, GPIO.HIGH)
+    GPIO.setup(ENB, GPIO.OUT, initial=GPIO.LOW)
+    GPIO.setup(STP, GPIO.OUT, initial=GPIO.LOW)
+    GPIO.setup(DIR, GPIO.OUT, initial=GPIO.LOW)
 
-input('Presione cualqiuer tecla: ')
+    try:
+        while True:
+            GPIO.output(DIR, GPIO.LOW)
 
+            for paso in range(STEPS_PER_REV):
+                GPIO.output(STP, GPIO.HIGH)
+                sleep_ms(10)
+                GPIO.output(STP, GPIO.LOW)
+                sleep_ms(10)
+    finally:
+        GPIO.cleanup()
+
+
+
+if __name__ == '__main__':
+    main()
