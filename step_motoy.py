@@ -1,5 +1,5 @@
 import Jetson.GPIO as GPIO
-from time import sleep_ms
+from time import sleep
 
 STP = 18
 DIR = 24
@@ -20,9 +20,9 @@ def main():
 
             for paso in range(STEPS_PER_REV):
                 GPIO.output(STP, GPIO.HIGH)
-                sleep_ms(10)
+                sleep_ms(0.010)
                 GPIO.output(STP, GPIO.LOW)
-                sleep_ms(10)
+                sleep_ms(0.010)
     finally:
         GPIO.cleanup()
 
