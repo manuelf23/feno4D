@@ -20,9 +20,9 @@ def main():
 
             for paso in range(STEPS_PER_REV):
                 GPIO.output(STP, GPIO.HIGH)
-                sleep_ms(0.010)
+                sleep(0.010)
                 GPIO.output(STP, GPIO.LOW)
-                sleep_ms(0.010)
+                sleep(0.010)
     finally:
         GPIO.cleanup()
 
