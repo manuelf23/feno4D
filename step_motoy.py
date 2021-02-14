@@ -15,6 +15,7 @@ def main():
     GPIO.setup(DIR, GPIO.OUT, initial=GPIO.LOW)
 
     try:
+        print('Para finalizar precione ctrl+c')
         while True:
             GPIO.output(DIR, GPIO.LOW)
 
@@ -23,8 +24,12 @@ def main():
                 sleep(1/t)
                 GPIO.output(STP, GPIO.LOW)
                 sleep(1/t)
+    except KeyboardInterrupt:
+        print('Ejecucuión Finalizada')
+
     finally:
         GPIO.cleanup()
+        print('Puertos disponbles')
 
 
 
