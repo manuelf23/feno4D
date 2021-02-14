@@ -25,7 +25,7 @@ def main():
                 GPIO.output(STP, GPIO.LOW)
                 sleep(1/t)
     except KeyboardInterrupt:
-        print('Ejecucuión Finalizada')
+        print('Ejecucuion Finalizada')
 
     finally:
         GPIO.cleanup()
