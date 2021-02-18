@@ -7,8 +7,8 @@ ENB = 25
 
 STEPS_PER_REV = 200
 t = float(input('Periodo en S: '))
-grados = float(input('grados por paso: '))
-steps = grados/1.8
+steps = float(input('grados por paso: '))
+# steps = grados/1.8
 def main():
     GPIO.setmode(GPIO.BCM)
 
@@ -21,7 +21,7 @@ def main():
         while True:
             GPIO.output(DIR, GPIO.LOW)
 
-            for paso in range(int(steps)):
+            for paso in range(steps):
                 GPIO.output(STP, GPIO.HIGH)
                 sleep(1/t)
                 GPIO.output(STP, GPIO.LOW)
