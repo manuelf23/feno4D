@@ -21,7 +21,7 @@ def main():
         while True:
             GPIO.output(DIR, GPIO.LOW)
 
-            for paso in range(steps):
+            for paso in range(int(steps)):
                 GPIO.output(STP, GPIO.HIGH)
                 sleep(1/t)
                 GPIO.output(STP, GPIO.LOW)
