@@ -1,18 +1,28 @@
 from read_frames_lidar import save_lidar_csv_file
-from take_parrot imporrt take_photos_parrot
+from take_parrot import take_photos_parrot
 import os
 from datetime import datetime
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("interface", help="Interfaz de la red a la cua está conectado el lidar", type=str)
+parser.add_argument("angle_motor", help="cada cuantos pasos se toma data", type=int)
+
+args = parser.parse_args()
+
 now = datetime.now()
 dt_string = now.strftime("%d-%m-%Y--%H-%M-%S")
+dt_string += '--' + str(args.angle_motor)
 base_path = './' + dt_string
 
 num_psckets = 1
-net_interface = 'en6'
+# net_interface = 'en6'
+net_interface = args.interface
+
 STEPS_PER_REV_BASE = 1300
 STEPS_PER_REV_MOTOR = 96
 
-angle = 90
-no_toma_data = 1
+angle = args.angle_motor
 
 step_number_per_revolution = int(360/angle)
 step_number_per_angle = int(STEPS_PER_REV_BASE/step_number_per_revolution)

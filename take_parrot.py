@@ -19,7 +19,7 @@ def take_photos_parrot(fname, sequoia_ip = '192.168.47.1'):
         if r_json[last_ph_folder] == 5:
             r = requests.get('http://' + sequoia_ip + '/download/' + last_ph_folder, stream=True)
             if r.status_code == 200:
-                with open(os.path.basename(fname) + '.zip', 'wb') as f:
+                with open(fname + '.zip', 'wb') as f:
                     r.raw.decode_content = True
                     shutil.copyfileobj(r.raw, f)
                     return 1
