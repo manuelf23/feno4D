@@ -5,7 +5,7 @@ STP = 18
 DIR = 24
 ENB = 25
 
-STEPS_PER_REV_BASE = 1290
+STEPS_PER_REV_BASE = 1300
 STEPS_PER_REV_MOTOR = 96
 # t = float(input('Periodo en S: '))
 # steps = int(input('grados por paso: '))
