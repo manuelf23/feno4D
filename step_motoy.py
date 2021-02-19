@@ -11,7 +11,7 @@ STEPS_PER_REV_MOTOR = 96
 # steps = int(input('grados por paso: '))
 # steps = grados/1.8
 
-def sense_step(period=1000, step_number_per_angle):
+def sense_step(step_number_per_angle, period=1000):
 
     GPIO.setmode(GPIO.BCM)
 
