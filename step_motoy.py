@@ -11,9 +11,7 @@ STEPS_PER_REV_MOTOR = 96
 # steps = int(input('grados por paso: '))
 # steps = grados/1.8
 
-def sense_step(period=1000, angle=12):
-    step_number_per_revolution = int(360/angle)
-    step_number_per_angle = int(STEPS_PER_REV_BASE/step_number_per_revolution)
+def sense_step(period=1000, step_number_per_angle):
 
     GPIO.setmode(GPIO.BCM)
 
@@ -22,17 +20,16 @@ def sense_step(period=1000, angle=12):
     GPIO.setup(DIR, GPIO.OUT, initial=GPIO.LOW)
 
     try:
-        print('Para finalizar precione ctrl+c')
+        # print('Para finalizar precione ctrl+c')
         GPIO.output(DIR, GPIO.LOW)
-        for s_rep in range(1000):
-            for paso in range(step_number_per_angle):
-                GPIO.output(STP, GPIO.HIGH)
-                sleep(1/period)
-                GPIO.output(STP, GPIO.LOW)
-                sleep(1/period)
-            input('pasos dados: '+ str(s_rep + 1) + ' --ENTER')
-            # print('MEDICION')
-            # sleep(2)
+        for paso in range(step_number_per_angle):
+            GPIO.output(STP, GPIO.HIGH)
+            sleep(1/period)
+            GPIO.output(STP, GPIO.LOW)
+            sleep(1/period)
+        # input('pasos dados: '+ str() + ' --ENTER')
+        # print('MEDICION')
+        # sleep(2)
     except KeyboardInterrupt:
         print('Ejecucuion Finalizada')
 
@@ -41,8 +38,7 @@ def sense_step(period=1000, angle=12):
         print('Puertos disponbles')
 
 def main():
-    v = int(input('angle: '))
-    sense_step(angle=v)
+    sense_step(period=1000, 1300):
 
 
 if __name__ == '__main__':
