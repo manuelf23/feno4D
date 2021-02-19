@@ -24,14 +24,15 @@ def sense_step(period=1000, angle=12):
     try:
         print('Para finalizar precione ctrl+c')
         GPIO.output(DIR, GPIO.LOW)
-        for s_rep in range(step_number_per_revolution):
+        for s_rep in range(1000):
             for paso in range(step_number_per_angle):
                 GPIO.output(STP, GPIO.HIGH)
                 sleep(1/period)
                 GPIO.output(STP, GPIO.LOW)
                 sleep(1/period)
-            print('MEDICION')
-            sleep(2)
+            input('pasos dados: '+ str(s_rep + 1) + ' --ENTER')
+            # print('MEDICION')
+            # sleep(2)
     except KeyboardInterrupt:
         print('Ejecucuion Finalizada')
 
