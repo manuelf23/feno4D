@@ -40,6 +40,7 @@ def sense_step(period=1000, angle=12):
         print('Puertos disponbles')
 
 def main():
+    v = int(input('angle: '))
     sense_step()
 
 
