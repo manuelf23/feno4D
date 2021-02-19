@@ -1,30 +1,43 @@
 import requests
 import json
+import time
 import shutil
 import os.path
-sequoia_ip = '192.168.47.1'
 
-# r = requests.get('http://' + sequoia_ip + '/capture/start')
 
-# print(json.dumps(r.json(), indent = 4))
+def take_photos_parrot(fname, sequoia_ip = '192.168.47.1'):
+    r = requests.get('http://' + sequoia_ip + '/capture/start')
+    # print(json.dumps(r.json(), indent = 4))
+    time.sleep(5)
+    r = requests.get('http://' + sequoia_ip + '/capture')
+    print(r.json()['status'])
+    if r.json()['status'] == 'Ready':
+        print('CAPTURA EXITOSA')
+        r = requests.get('http://' + sequoia_ip + '/file/internal')
+        r_json = r.json()
+        last_ph_folder = list(r_json.keys())[-1]
+        if r_json[last_ph_folder] == 5:
+            r = requests.get('http://' + sequoia_ip + '/download/' + last_ph_folder, stream=True)
+            if r.status_code == 200:
+                with open(os.path.basename(fname) + '.zip', 'wb') as f:
+                    r.raw.decode_content = True
+                    shutil.copyfileobj(r.raw, f)
+                    return 1
+            else:
+                return 0
+        else:
+            return 0
+    else:
+        r = requests.get('http://' + sequoia_ip + '/capture/stop')
+        print('CAPTURA FALLIDA')
+        time.sleep(2)
+        return 0
 
-# To download a single file
-# img = "internal/0208/IMG_160704_133619_0208_GRE.TIF"
-# img = "internal/0246/IMG_700101_000922_0000_RGB.JPG"
+    
 
-# r = requests.get('http://' + sequoia_ip + '/download/' + img, stream=True)
+def main():
+    take_photos_parrot('prueba')
 
-# if r.status_code == 200:
-#     with open(os.path.basename(img), 'wb') as f:
-#         r.raw.decode_content = True
-#         shutil.copyfileobj(r.raw, f)
 
-# To download an entire directory
-directory = "internal/0246"
-
-r = requests.get('http://' + sequoia_ip + '/download/' + directory, stream=True)
-
-if r.status_code == 200:
-    with open(os.path.basename(directory) + '.zip', 'wb') as f:
-        r.raw.decode_content = True
-        shutil.copyfileobj(r.raw, f)
+if __name__ == '__main__':
+    main()

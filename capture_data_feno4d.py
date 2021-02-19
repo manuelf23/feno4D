@@ -1,4 +1,5 @@
 from read_frames_lidar import save_lidar_csv_file
+from take_parrot imporrt take_photos_parrot
 import os
 from datetime import datetime
 now = datetime.now()
@@ -25,10 +26,14 @@ else:
 
 for rep in range(step_number_per_revolution):
     fileName = base_path + '/' + str(rep+1)
-    print('parrot images saved (NO)')
-    r = save_lidar_csv_file(fileName, num_psckets, net_interface)
-    if r ==1 :
-        print('LiDAR frames saved (yes)')
-        sense_step(step_number_per_angle)
+    r = 0
+    while not r:
+        r = take_photos_parrot(fileName)
+    print('PARROT frames saved (yes)')
+    r = 0
+    while not r:
+        r = save_lidar_csv_file(fileName, num_psckets, net_interface)
+    print('LiDAR frames saved (yes)')
+    sense_step(step_number_per_angle)
 
 print('TOMA DE DATA FINALIZADA')
