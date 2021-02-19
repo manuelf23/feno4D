@@ -38,7 +38,7 @@ def sense_step(step_number_per_angle, period=1000):
         print('Puertos disponbles')
 
 def main():
-    sense_step(period=1000, 1300)
+    sense_step(1300, period=1000)
 
 
 if __name__ == '__main__':
