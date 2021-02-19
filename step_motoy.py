@@ -41,7 +41,7 @@ def sense_step(period=1000, angle=12):
 
 def main():
     v = int(input('angle: '))
-    sense_step()
+    sense_step(angle=v)
 
 
 if __name__ == '__main__':
