@@ -6,8 +6,8 @@ encoB = 17
 
 def get_encoder(prev_val, counter=0):
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(encoA, GPIO.INPUT)
-    GPIO.setup(encoB, GPIO.INPUT)
+    GPIO.setup(encoA, GPIO.IN)
+    GPIO.setup(encoB, GPIO.IN)
     
 
     actual_val = GPIO.input(encoA)
