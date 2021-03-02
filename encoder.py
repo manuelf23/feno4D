@@ -24,7 +24,7 @@ def get_encoder(prev_val, counter=0):
 
 def initial_state():
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(encoA, GPIO.INPUT)
+    GPIO.setup(encoA, GPIO.IN)
     return GPIO.input(encoA)
 
 def main():

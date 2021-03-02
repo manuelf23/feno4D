@@ -4,3 +4,19 @@
 .DS_Store
 
 __pycache__/
+
+*.pcap
+
+*.csv
+
+*.zip
+
+19-02-2021--09-22-09--45/1/IMG_700101_020632_0000_RED.TIF
+
+*.TIF
+
+*.JPG
+
+*.json
+
+*.dat
