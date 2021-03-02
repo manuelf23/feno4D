@@ -31,10 +31,10 @@ def main():
     initial_val = initial_state()
     prev_val, pos = get_encoder(initial_val)
 
-    for i in range(10):
+    while 1:
         prev_val, pos = get_encoder(prev_val, pos)
         print(pos)
-        sleep(1)
+        # sleep(1)
 
 
 if __name__ == '__main__':
