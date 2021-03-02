@@ -32,7 +32,7 @@ def prove_pins():
     GPIO.setup(encoA, GPIO.IN)
     GPIO.setup(encoB, GPIO.IN)
 
-    print('pin A:', GPIO.input(encoA), '----', 'pin B:', GPIO.input(encoB)
+    print('pin A:', GPIO.input(encoA), '----', 'pin B:', GPIO.input(encoB))
 
 def main():
     initial_val = initial_state()
