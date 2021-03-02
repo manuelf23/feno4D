@@ -2,7 +2,7 @@ import Jetson.GPIO as GPIO
 from time import sleep
 
 encoA = 27
-encoB = 17
+encoB = 22
 
 def get_encoder(prev_val, counter=0):
     GPIO.setmode(GPIO.BCM)
