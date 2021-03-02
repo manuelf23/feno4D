@@ -34,7 +34,7 @@ def main():
     for i in range(10):
         prev_val, pos = get_encoder(prev_val, pos)
         print(pos)
-        time.sleep(1)
+        sleep(1)
 
 
 if __name__ == '__main__':
