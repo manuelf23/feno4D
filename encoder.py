@@ -13,7 +13,7 @@ def get_encoder(prev_val, counter=0):
     actual_val = GPIO.input(encoA)
 
     if (actual_val != prev_val):
-        if (GPIO.input(encoA != actual_val):
+        if (GPIO.input(encoA != actual_val)):
             counter += 1
         else:
             counter -= 1
