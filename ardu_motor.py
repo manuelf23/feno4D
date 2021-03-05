@@ -9,7 +9,8 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(TX_JETSON, GPIO.OUT, initial=GPIO.LOW) 
 GPIO.setup(RX_JETSON, GPIO.IN)
 
-paso_base = 30
+
+paso_base = int(input('ingrese los  pasos: '))
 paso = 0
 
 def medir():
