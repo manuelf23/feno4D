@@ -27,5 +27,5 @@ while(1):
     while (not GPIO.input(RX_JETSON)):
         pass
     paso += paso_base
-    if paso % 360 == 0:
+    if paso % 60 == 0:
         input('Vuelta completa. ENTER PARA CONTINUAR:')
