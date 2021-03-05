@@ -1,3 +1,4 @@
+# coding=utf-8
 from read_frames_lidar import save_lidar_csv_file
 from take_parrot import take_photos_parrot
 import os
