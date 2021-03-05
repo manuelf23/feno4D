@@ -26,6 +26,7 @@ def method_filter_HTTP(pkt):
     xyzP_array = []
     xyzPFire_array = []
     a=bytes(pkt)
+    print(a)
     hexarray=a.hex().split('ffee')
     if len(hexarray) == 13:
        
