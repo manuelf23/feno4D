@@ -83,7 +83,7 @@ def save_lidar_csv_file(fname, nPackets, interface):
                 sniff(offline= fname+".pcap",prn=method_filter_HTTP,store=0)
                 return 1
         except Exception as e:
-            print('Error:', e)
+            print('Error read_frames_lidar:', e)
             return 0
         
     else:
