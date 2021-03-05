@@ -10,8 +10,6 @@ from take_parrot import take_photos_parrot
 from datetime import datetime
 import argparse
 
-if 
-
 
 parser = argparse.ArgumentParser()
 parser.add_argument("interface", help="Interfaz de la red a la cua está conectado el lidar", type=str)
