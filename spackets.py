@@ -22,6 +22,7 @@ def save_packets_lidar(fname, nPackets, interface):
                      stderr=subprocess.PIPE)
 
     stdout, stderr = process.communicate()
+    process.TerminateProcess()
     print(stderr)
     if '(No such device exists)' in str(stderr):
         return 2 # The network interface does not exist
