@@ -24,7 +24,7 @@ def save_packets_lidar(fname, nPackets, interface):
     stdout, stderr = process.communicate()
     if '(No such device exists)' in str(stderr):
         return 2 # The network interface does not exist
-    rPackets = int(str(stderr).split('\\n')[1].split(' ')[0])
+    rPackets = int(str(stderr).split('\n')[1].split(' ')[0])
     if rPackets == nPackets * 100:
         return 1 # Packest were saved correctly
     else:
