@@ -3,6 +3,7 @@ import os
 jetson_venv_dir = '/home/ubuntu/feno4d_venv/lib/python3.8/site-packages'
 if os.path.isdir(jetson_venv_dir):
     os.sys.path.append(jetson_venv_dir)
+    os.sys.path.append('')
 
 from read_frames_lidar import save_lidar_csv_file
 from take_parrot import take_photos_parrot

@@ -1,6 +1,6 @@
 # coding=utf-8
 import subprocess
-
+print(subprocess.__file__)
 from textwrap import wrap
 from convert_data import azimuth, interpolacion_azimuth,dataPoint, timeStamp, calc_xyz
 
