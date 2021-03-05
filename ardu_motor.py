@@ -1,3 +1,4 @@
+# coding=utf-8
 import Jetson.GPIO as GPIO
 import time
 

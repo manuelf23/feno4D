@@ -1,3 +1,4 @@
+# coding=utf-8
 import struct
 from textwrap import wrap
 import numpy as np

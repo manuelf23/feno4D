@@ -1,3 +1,4 @@
+# coding=utf-8
 from scapy.all import *
 from textwrap import wrap
 from convert_data import azimuth, interpolacion_azimuth,dataPoint, timeStamp, calc_xyz
