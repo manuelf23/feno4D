@@ -1,5 +1,6 @@
 # coding=utf-8
 import subprocess
+import time
 
 from textwrap import wrap
 from convert_data import azimuth, interpolacion_azimuth,dataPoint, timeStamp, calc_xyz
@@ -17,7 +18,7 @@ def save_packets_lidar(fname, nPackets, interface):
                     Code 1: Packest were saved correctly
                     Code 2: The network interface does not exist
     """
-    print('tcpdump', '-c', str(nPackets * 100), '-w' , fname + '.pcap', '-i', interface)
+    time.sleep(5)
     process = subprocess.Popen(['tcpdump', '-c', str(nPackets * 100), '-w' , fname + '.pcap', '-i', interface],
                      stdout=subprocess.PIPE, 
                      stderr=subprocess.PIPE)
