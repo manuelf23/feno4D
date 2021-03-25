@@ -2,34 +2,26 @@
 import Jetson.GPIO as GPIO
 import time
 
-RX_JETSON = 18
-TX_JETSON = 24
+class Turntable():
+    def __init__(self):
+        self.RX_JETSON = 25 # cable verde
+        self.TX_JETSON = 24 # cable blanco 24 EN BCM en pines de lsa Jetson es el 18 del conector j21
 
-GPIO.setmode(GPIO.BCM)
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(self.TX_JETSON, GPIO.OUT, initial=GPIO.LOW) 
+        GPIO.setup(self.RX_JETSON, GPIO.IN)
 
-GPIO.setup(TX_JETSON, GPIO.OUT, initial=GPIO.LOW) 
-GPIO.setup(RX_JETSON, GPIO.IN)
+    def turn(self):
+        print("inicio rotacion")
+        GPIO.output(self.TX_JETSON, GPIO.HIGH)
+        time.sleep(0.5)
+        GPIO.output(self.TX_JETSON, GPIO.LOW)
+        time.sleep(0.5)
+        while (not GPIO.input(self.RX_JETSON)):
+            pass
+        print("fin rotacion")
 
 
-paso_base = int(input('ingrese los  pasos: '))
-paso = 0
+# step_grade = int(input('Ingrese los  pasos en grados [6, 12, 18, 24, 30, 36, 60, 72, 90, 120, 180, 360]: '))
+# step = int(step_grade * 60 / 360)
 
-def medir():
-    print('midiendo')
-    time.sleep(1)
-    print('fin de medicion')
-
-while(1):
-    medir()
-    GPIO.output(TX_JETSON, GPIO.HIGH)
-    time.sleep(0.5)
-    GPIO.output(TX_JETSON, GPIO.LOW)
-    time.sleep(0.5)
-    rotado = GPIO.input(RX_JETSON)
-    while (not GPIO.input(RX_JETSON)):
-        pass
-    paso += paso_base
-    print('espera mientras planta se estabiliza')
-    time.sleep(2)
-    if paso % 60 == 0:
-        input('Vuelta completa. ENTER PARA CONTINUAR:')
